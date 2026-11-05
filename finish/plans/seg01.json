@@ -1,0 +1,27 @@
+{
+  "name": "seg01",
+  "source": "first_12.mp4 (0:00-0:12)",
+  "global_start_frame": 0,
+  "fps": "30000/1001",
+  "music_notes": "~115 BPM (beat = 0.52 s = ~15.6 frames). Full groove 0-4.5 s, beat drop-out 4.5-6.4 s, big hit 6.5 s (f195), hard percussive hits 10-11 s (f297, f314, f330).",
+  "cuts": [0, 44, 110, 134, 229, 258, 321, 360],
+  "soften": {"1": 0.45, "3": 0.45, "4": 0.4, "6": 0.4},
+  "camera": [
+    {"frames": [0, 43], "anchor": [980, 500], "note": "street POV intro, slow drift in",
+     "moves": [["ramp", 0, 43, 1.0, 1.03]]},
+    {"frames": [44, 228], "anchor": [950, 560], "note": "one continuous push across the title shots so the title never jumps; still during the glitch/clone effects; punch on the 6.5 s drop",
+     "moves": [["ramp", 78, 228, 1.0, 1.05], ["punch", 195, 0.045, 2, 11]]},
+    {"frames": [229, 257], "anchor": [770, 330], "note": "smoke shot, smooth push toward face",
+     "moves": [["snapback", 229, 0.04, 7], ["ramp", 229, 257, 1.0, 1.04]]},
+    {"frames": [258, 320], "anchor": [960, 580], "note": "aggressive: snap-back, then punches on the hits",
+     "moves": [["snapback", 258, 0.07, 6], ["punch", 283, 0.035, 2, 8], ["punch", 297, 0.05, 2, 8], ["punch", 314, 0.06, 2, 8]]},
+    {"frames": [321, 359], "anchor": [860, 430], "note": "crew: hardest hit at 11.0 s, then settle; segment ends near 1.0x so the next segment can start clean",
+     "moves": [["punch", 330, 0.07, 2, 13], ["ramp", 331, 359, 1.0, 1.025]]}
+  ],
+  "transitions": [
+    {"type": "flash", "frame": 44, "note": "street -> title section"},
+    {"type": "whip", "frame": 228, "note": "into the smoke shot"},
+    {"type": "leak", "frame": 321, "note": "street -> crew, into the final hits"}
+  ],
+  "rgb_hits": [[195, 0.8], [227, 0.6], [228, 1.0], [320, 0.5], [321, 1.0], [330, 0.6]]
+}
