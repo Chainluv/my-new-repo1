@@ -61,7 +61,12 @@ def snapback(t, f0, amp, dur=6.0):
     return 1 + amp * (1 - ease_out((t - f0) / dur))
 
 
-MOVES = {"ramp": ramp, "punch": punch, "snapback": snapback}
+def hold(t, sc):
+    """Constant zoom, e.g. to continue the previous segment's framing or hide black edges."""
+    return sc
+
+
+MOVES = {"ramp": ramp, "punch": punch, "snapback": snapback, "hold": hold}
 
 
 def motion(t):
@@ -238,9 +243,15 @@ def shot_stats(frames):
     for i in range(len(CUTS) - 1):
         sub = frames[CUTS[i]:CUTS[i + 1]:3, ::8, ::8].astype(np.float32) / 255
         lum = float(np.median(sub @ LUMA))
-        gains.append(float(np.clip((target / lum) ** 0.4, 0.9, 1.12)))
+        gains.append(float(np.clip((target / max(lum, 0.02)) ** 0.4, 0.9, 1.12)))
         mean = sub.reshape(-1, 3).mean(0)
         wbs.append(((mean.mean() - mean) * 0.3).astype(np.float32))  # 30% toward neutral
+    # Graphics/title cards keep their own exposure and colour.
+    for i in PLAN.get("no_match", []):
+        gains[i], wbs[i] = 1.0, np.zeros(3, np.float32)
+    # A shot that continues from the previous segment reuses that segment's values.
+    for k, v in PLAN.get("match_override", {}).items():
+        gains[int(k)], wbs[int(k)] = float(v["gain"]), np.float32(v["wb"])
     return gains, wbs
 
 

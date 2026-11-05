@@ -38,6 +38,16 @@ Needs: ffmpeg (libx264), Python 3 with `numpy` and `opencv-python-headless`
 5. **Transitions:** at most ~3 per 10 s, only at major musical changes. Leave most cuts clean.
 6. **Your effects** (glitches, clones, flares): keep the camera still over them and don't stack transitions on top.
 7. **Segment edges:** end each segment at about 1.0× zoom with no transition running, so the next one joins seamlessly.
+   If the next segment opens on the same shot, `hold` the previous segment's final zoom and anchor, and copy that shot's
+   `gain`/`wb` (printed during the render) into `match_override`, so the grade doesn't jump either.
+8. **Black edges in the source** (from a shake or scale effect): measure them, then give that shot a `hold` base zoom big enough to cover them.
+   Put the anchor on the side away from the border so the zoom needed is as small as possible.
+9. **Graphics and title cards** (your designed frames): list them in `no_match` so their exposure and colour aren't shifted, and don't move the camera over them.
 
 ## Segment log
 - **seg01** (0:00–0:12, `first_12.mp4`): street POV → title (push across the B/C/D shots, punch on the 6.5 s drop) → smoke (whip in) → street (snap-back + 3 punches) → crew (light leak in, hardest punch at 11.0 s).
+- **seg02** (0:12–0:24, `2.mp4`, continues seg01): holds seg01's final framing for the crew-shot tail → still over the warp/outline
+  effects, then a punch at 1.9 s → fence shot (snap-back, punches at 3.9/4.3 s) → smooth push on the walk during the dip →
+  snap-backs as the music slams back in (close-up, indoor) → graphic card untouched → wide shot zoomed 3% to hide a black edge
+  in the source → whip into the leaves POV → smooth pushes as the hook arrives, light leak into the low-angle close-up.
+  Ends at 1.03× on that close-up (anchor 900,300); seg03 should `hold` that if the shot continues.

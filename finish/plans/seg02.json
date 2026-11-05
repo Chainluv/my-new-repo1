@@ -1,0 +1,40 @@
+{
+  "name": "seg02",
+  "source": "2.mp4 (continues straight on from seg01; 0:12-0:24)",
+  "global_start_frame": 360,
+  "fps": "30000/1001",
+  "music_notes": "~115 BPM. Aggressive stop-start verse: hits ~1.9 s (f56), 3.9/4.3 s (f116/f129), dips 3.0-3.6 s and 5.0-5.5 s, music back at 5.77 s (cut f173), big hit 7.27 s (cut f218), 9.2 s (cut f275), 10.27 s (f308). Harmonised hook comes in ~10.8 s and is full by the 11.28 s cut (f338).",
+  "cuts": [0, 12, 70, 148, 173, 193, 204, 218, 275, 314, 338, 366],
+  "soften": {"1": 0.4, "2": 0.45, "3": 0.45, "7": 0.45, "8": 0.4, "9": 0.45, "10": 0.4},
+  "no_match": [5],
+  "match_override": {"0": {"gain": 0.994, "wb": [-0.0082, 0.0024, 0.0058], "note": "same crew shot that ends seg01"}},
+  "camera": [
+    {"frames": [0, 11], "anchor": [860, 430], "note": "tail of the seg01 crew shot: hold seg01's final zoom so the join is seamless",
+     "moves": [["hold", 1.025]]},
+    {"frames": [12, 69], "anchor": [1010, 450], "note": "still over the warp/outline effects, then ease in and punch the 1.9 s hit",
+     "moves": [["ramp", 46, 69, 1.0, 1.025], ["punch", 56, 0.04, 2, 9]]},
+    {"frames": [70, 147], "anchor": [960, 540], "note": "fence/leaves: snap-back on the cut, quiet through the dip, punches on the two hits",
+     "moves": [["snapback", 70, 0.06, 6], ["punch", 116, 0.04, 2, 8], ["punch", 129, 0.05, 2, 9]]},
+    {"frames": [148, 172], "anchor": [810, 480], "note": "walk toward camera during the dip: smooth push",
+     "moves": [["ramp", 148, 172, 1.0, 1.035]]},
+    {"frames": [173, 192], "anchor": [960, 520], "note": "music slams back in: snap-back on the close-up",
+     "moves": [["snapback", 173, 0.06, 6]]},
+    {"frames": [193, 203], "anchor": [960, 540], "note": "your graphic card: untouched",
+     "moves": [["hold", 1.0]]},
+    {"frames": [204, 217], "anchor": [940, 600], "note": "indoor close-up",
+     "moves": [["snapback", 204, 0.05, 6]]},
+    {"frames": [218, 274], "anchor": [650, 430], "note": "source has a 25-28 px black edge on the right from f224: base zoom 1.03 about this anchor covers it",
+     "moves": [["hold", 1.03], ["snapback", 218, 0.06, 6], ["ramp", 224, 274, 1.0, 1.02]]},
+    {"frames": [275, 313], "anchor": [960, 540], "note": "moving leaves POV after the whip; punch on the 10.27 s hit",
+     "moves": [["punch", 308, 0.04, 2, 6]]},
+    {"frames": [314, 337], "anchor": [825, 450], "note": "hook arriving: smooth push",
+     "moves": [["ramp", 314, 337, 1.0, 1.035]]},
+    {"frames": [338, 365], "anchor": [900, 300], "note": "hook, low-angle close-up after the light leak: slow push; ends at 1.03 (next segment should start there if this shot continues)",
+     "moves": [["ramp", 338, 365, 1.0, 1.03]]}
+  ],
+  "transitions": [
+    {"type": "whip", "frame": 274, "note": "into the moving leaves POV"},
+    {"type": "leak", "frame": 338, "note": "into the hook"}
+  ],
+  "rgb_hits": [[70, 0.6], [218, 0.9], [273, 0.6], [274, 1.0], [337, 0.5], [338, 0.9]]
+}
