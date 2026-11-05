@@ -147,7 +147,7 @@ def render(f):
 
     # 1. Camera move with 180-degree shutter motion blur on fast changes.
     sc1, ax, ay = motion(f)
-    sc0, _, _ = motion(f - 0.5)
+    sc0, _, _ = motion(max(f - 0.5, CUTS[s]))  # first frame of a shot: no blur from the previous shot
     if abs(sc1 - sc0) > 0.0015:
         n = 6
         acc = np.zeros((H, W, 3), np.float32)
@@ -170,8 +170,16 @@ def render(f):
         img = cv2.addWeighted(img, 1 - min(1, w * 1.2), cv2.filter2D(img, -1, k), min(1, w * 1.2), 0)
 
     # 3. Grade: per-shot exposure + white-balance match, film curve, muted colour.
-    img = img * SHOT_GAIN[s]
-    img = img + SHOT_WB[s]
+    gain, wb = SHOT_GAIN[s], SHOT_WB[s]
+    for a, b in PLAN.get("grade_blend", []):
+        # Your own dissolve/swirl between two shots: ease the grade across it instead of switching on one frame.
+        if a <= f <= b:
+            u = ease_io((f - a + 0.5) / (b - a + 1))
+            s0, s1 = shot_of(a - 1), shot_of(b)
+            gain = SHOT_GAIN[s0] + (SHOT_GAIN[s1] - SHOT_GAIN[s0]) * u
+            wb = SHOT_WB[s0] + (SHOT_WB[s1] - SHOT_WB[s0]) * u
+    img = img * gain
+    img = img + wb
     img = np.clip(img, 0, 1)
     img = np.interp(img, np.linspace(0, 1, 4096), CURVE).astype(np.float32)
     L = img @ LUMA

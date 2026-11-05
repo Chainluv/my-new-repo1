@@ -1,0 +1,32 @@
+{
+  "name": "seg03",
+  "source": "3.mp4 (continues straight on from seg02; 0:24-0:34)",
+  "global_start_frame": 726,
+  "fps": "30000/1001",
+  "music_notes": "Harmonised hook, full and dense throughout. Strong percussive hits at f36, f46, f67, f89, f121, f157, f168/173, f242. Mostly smooth, atmospheric moves here; this segment is full of your own effects (swirl f42-57, split screen f146-167, 3x3 grid f186-193, block grid f219-269, filmstrip f270-300), so they're left to carry it.",
+  "cuts": [0, 52, 73, 146, 168, 177, 194, 219, 270, 301],
+  "soften": {"0": 0.4, "2": 0.4, "3": 0.4, "7": 0.4, "8": 0.4},
+  "match_override": {"0": {"gain": 0.900, "wb": [-0.0019, -0.003, 0.0049], "note": "same low-angle close-up that ends seg02"}},
+  "grade_blend": [[52, 57]],
+  "camera": [
+    {"frames": [0, 72], "anchor": [900, 300], "note": "continue seg02's 1.03 framing through your swirl into the car; one small punch on the f67 hit once the swirl has cleared",
+     "moves": [["hold", 1.03], ["punch", 67, 0.03, 2, 9]]},
+    {"frames": [73, 145], "anchor": [1030, 420], "note": "hook, smoke close-up: slow push, gentle accent on the f121 hit",
+     "moves": [["ramp", 73, 145, 1.0, 1.05], ["punch", 121, 0.025, 2, 12]]},
+    {"frames": [146, 167], "anchor": [960, 540], "note": "your split-screen panels (incl. their letterbox): untouched",
+     "moves": [["hold", 1.0]]},
+    {"frames": [168, 176], "anchor": [960, 540], "note": "road POV after the flash, landing on the f168/173 hits",
+     "moves": [["snapback", 168, 0.05, 5]]},
+    {"frames": [177, 193], "anchor": [960, 540], "note": "indoor + your 3x3 grid: untouched",
+     "moves": [["hold", 1.0]]},
+    {"frames": [194, 218], "anchor": [960, 540], "note": "road POV after the whip: smooth push",
+     "moves": [["ramp", 194, 218, 1.0, 1.04]]},
+    {"frames": [219, 300], "anchor": [960, 540], "note": "your block-grid and filmstrip effects: untouched; segment ends at 1.0",
+     "moves": [["hold", 1.0]]}
+  ],
+  "transitions": [
+    {"type": "flash", "frame": 168, "strength": 0.8, "note": "split screen -> road, on the hits"},
+    {"type": "whip", "frame": 193, "note": "3x3 grid -> road POV"}
+  ],
+  "rgb_hits": [[73, 0.5], [168, 0.6], [192, 0.6], [193, 1.0]]
+}

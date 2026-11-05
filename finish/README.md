@@ -42,7 +42,10 @@ Needs: ffmpeg (libx264), Python 3 with `numpy` and `opencv-python-headless`
    `gain`/`wb` (printed during the render) into `match_override`, so the grade doesn't jump either.
 8. **Black edges in the source** (from a shake or scale effect): measure them, then give that shot a `hold` base zoom big enough to cover them.
    Put the anchor on the side away from the border so the zoom needed is as small as possible.
-9. **Graphics and title cards** (your designed frames): list them in `no_match` so their exposure and colour aren't shifted, and don't move the camera over them.
+9. **Your own dissolves/swirls between shots:** put the cut in the middle of the dissolve, and list its frame range in
+   `grade_blend` so the shot grade eases across it instead of popping.
+10. **`global_start_frame`:** the running frame total of all earlier segments (seg01 0, seg02 360, seg03 726, seg04 1027).
+11. **Graphics and title cards** (your designed frames): list them in `no_match` so their exposure and colour aren't shifted, and don't move the camera over them.
 
 ## Segment log
 - **seg01** (0:00–0:12, `first_12.mp4`): street POV → title (push across the B/C/D shots, punch on the 6.5 s drop) → smoke (whip in) → street (snap-back + 3 punches) → crew (light leak in, hardest punch at 11.0 s).
@@ -51,3 +54,7 @@ Needs: ffmpeg (libx264), Python 3 with `numpy` and `opencv-python-headless`
   snap-backs as the music slams back in (close-up, indoor) → graphic card untouched → wide shot zoomed 3% to hide a black edge
   in the source → whip into the leaves POV → smooth pushes as the hook arrives, light leak into the low-angle close-up.
   Ends at 1.03× on that close-up (anchor 900,300); seg03 should `hold` that if the shot continues.
+- **seg03** (0:24–0:34, `3.mp4`, continues seg02): the hook. Holds seg02's 1.03 framing through your swirl into the car
+  (grade blended across the swirl, f52–57) → slow push on the smoke close-up → split screen untouched → film flash into the
+  road POV on the hits → indoor and 3×3 grid untouched → whip into the road POV with a smooth push → your block-grid and
+  filmstrip effects untouched to the end. Ends at 1.0×, no transition running.
