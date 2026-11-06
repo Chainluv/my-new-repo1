@@ -44,7 +44,7 @@ Needs: ffmpeg (libx264), Python 3 with `numpy` and `opencv-python-headless`
    Put the anchor on the side away from the border so the zoom needed is as small as possible.
 9. **Your own dissolves/swirls between shots:** put the cut in the middle of the dissolve, and list its frame range in
    `grade_blend` so the shot grade eases across it instead of popping.
-10. **`global_start_frame`:** the running frame total of all earlier segments (seg01 0, seg02 360, seg03 726, seg04 1027).
+10. **`global_start_frame`:** the running frame total of all earlier segments (seg01 0, seg02 360, seg03 726, seg04 1027, seg05 1328).
 11. **Graphics and title cards** (your designed frames): list them in `no_match` so their exposure and colour aren't shifted, and don't move the camera over them.
 
 ## Segment log
@@ -58,3 +58,8 @@ Needs: ffmpeg (libx264), Python 3 with `numpy` and `opencv-python-headless`
   (grade blended across the swirl, f52–57) → slow push on the smoke close-up → split screen untouched → film flash into the
   road POV on the hits → indoor and 3×3 grid untouched → whip into the road POV with a smooth push → your block-grid and
   filmstrip effects untouched to the end. Ends at 1.0×, no transition running.
+- **seg04** (0:34–0:44, `4.mp4`, continues seg03): filmstrip tail untouched → smooth push on the close-up, held still through
+  your swirl → your film-gate frame shot untouched (no zoom, no grade matching) → smooth push on the low angle during the dip →
+  gentle push on the purple-outline wide → film flash into the road POV, push plus punches through the loud stretch → whip and
+  snap-back into the indoor shot on the hit → snap-back and accents on the outlined indoor shot → snap-back on the final low angle,
+  settling at 1.0× by the last frames. seg05 starts at `global_start_frame` 1328.

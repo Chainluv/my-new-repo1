@@ -1,0 +1,40 @@
+{
+  "name": "seg04",
+  "source": "4.mp4 (continues straight on from seg03; 0:34-0:44)",
+  "global_start_frame": 1027,
+  "fps": "30000/1001",
+  "music_notes": "Hook tail into a stop-start section: dip ~2.75-4.0 s, loud stretch 5.5-7.25 s, dip ~8.25-8.75 s, back up at 9.5 s. Strong hits f52, f73 (cut 71), f115, f168, f195, f205, f221 (cut), f243, f253, f263, f290 (cut).",
+  "cuts": [0, 27, 71, 100, 130, 153, 221, 228, 240, 274, 278, 290, 301],
+  "soften": {"0": 0.4, "1": 0.4, "3": 0.4, "4": 0.45, "7": 0.45, "10": 0.45, "11": 0.45},
+  "no_match": [2],
+  "match_override": {"0": {"gain": 0.997, "wb": [-0.0119, 0.0008, 0.0111], "note": "same filmstrip shot that ends seg03"}},
+  "camera": [
+    {"frames": [0, 26], "anchor": [960, 540], "note": "tail of your filmstrip effect: untouched, as at the end of seg03",
+     "moves": [["hold", 1.0]]},
+    {"frames": [27, 70], "anchor": [920, 430], "note": "close-up: smooth push, small accent on the 1.7 s hit, then held still through your swirl (f63-70)",
+     "moves": [["ramp", 27, 62, 1.0, 1.04], ["punch", 52, 0.03, 2, 9]]},
+    {"frames": [71, 99], "anchor": [960, 540], "note": "your film-gate frame effect: untouched, no grade matching",
+     "moves": [["hold", 1.0]]},
+    {"frames": [100, 129], "anchor": [870, 380], "note": "low-angle during the dip: smooth push, light accent on the 3.85 s hit",
+     "moves": [["ramp", 100, 129, 1.0, 1.04], ["punch", 115, 0.03, 2, 9]]},
+    {"frames": [130, 152], "anchor": [920, 430], "note": "wide with your purple outline: gentle push",
+     "moves": [["ramp", 130, 152, 1.0, 1.03]]},
+    {"frames": [153, 220], "anchor": [960, 560], "note": "road POV after the flash, building into the loud stretch: push plus punches on the hits",
+     "moves": [["ramp", 153, 220, 1.0, 1.04], ["punch", 168, 0.035, 2, 8], ["punch", 195, 0.05, 2, 8], ["punch", 205, 0.04, 2, 8]]},
+    {"frames": [221, 227], "anchor": [620, 450], "note": "indoor flash cut on the f221 hit: snap-back",
+     "moves": [["snapback", 221, 0.06, 5]]},
+    {"frames": [228, 239], "anchor": [960, 540], "note": "leaf throw: clean",
+     "moves": [["hold", 1.0]]},
+    {"frames": [240, 273], "anchor": [630, 480], "note": "indoor with your purple outline: snap-back, accents on f253/f263",
+     "moves": [["snapback", 240, 0.05, 6], ["punch", 253, 0.03, 2, 7], ["punch", 263, 0.04, 2, 8]]},
+    {"frames": [274, 289], "anchor": [960, 540], "note": "two quick shots: clean",
+     "moves": [["hold", 1.0]]},
+    {"frames": [290, 300], "anchor": [900, 420], "note": "low-angle on the f290 hit: snap-back, settles at 1.0 by f296 so seg05 can start clean",
+     "moves": [["snapback", 290, 0.06, 6]]}
+  ],
+  "transitions": [
+    {"type": "flash", "frame": 153, "strength": 0.7, "note": "into the road POV and the loud stretch"},
+    {"type": "whip", "frame": 220, "note": "road POV -> indoor on the hit"}
+  ],
+  "rgb_hits": [[195, 0.6], [219, 0.6], [220, 1.0], [243, 0.6], [290, 0.8]]
+}
